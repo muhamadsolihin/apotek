@@ -1,0 +1,92 @@
+.sidebar {
+    width: 100%;
+    background-color: #E6EBF7;
+    opacity: 1;
+    color: #ffffff;
+}
+
+.nav-item.a {
+    color: #ffffff;
+}
+
+
+
+
+.img-card{
+    width: 25%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+}
+.card-green{
+    border: 3px solid #40D2AF;
+    border-radius: 10px;
+    width: 20%;
+    padding: 1em;
+}
+.card-yellow{
+    border: 3px solid #FED600;
+    border-radius: 10px;
+    width: 20%;
+    padding: 1em;
+}
+.card-blue{
+    border: 3px solid #03A9F5;
+    border-radius: 10px;
+    width: 20%;
+    padding: 1em;
+}
+.card-red{
+    border: 3px solid #F0483E;
+    border-radius: 10px;
+    width: 20%;
+    padding: 1em;
+}
+
+.card-hijau{
+    border: 3px solid greenyellow;
+    border-radius: 10px;
+    width: 20%;
+    padding: 1em;
+}
+
+
+.text-big {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.w-full{
+    width: 100%;
+}
+.h-1{
+    color:#40D2AF;
+}
+.h-2{
+    color: red;
+}
+.h-3{
+    color: blue;
+}
+.bg-nav{
+    background-color: #40D2AF;
+}
+.bg-body{
+    background-color: #EDF1F5;
+}
+.h-full{
+    height: 100vh;
+}
+.logo{
+    width: 5%;
+}
+.images-head{
+    width: 70%;
+}
+.text-body {
+    font-weight: 400;
+    font-size: 16px;
+}
+.card{
+    width: 100%;
+    padding: 1em;
+}

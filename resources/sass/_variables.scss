@@ -1,0 +1,51 @@
+// Body
+$body-bg: #EDF1F5;
+$table-primary:#40D2AF;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+$text-light: #fff;
+.text-big {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.w-full{
+    width: 100%;
+}
+.h-1{
+    font-weight: 700;
+    color:#000;
+}
+.h-2{
+    color: red;
+}
+.h-3{
+    color: blue;
+}
+.bg-nav{
+    background-color: #212B36;
+}
+.bg-body{
+    background-color: #EDF1F5;
+}
+.h-full{
+    height: 100vh;
+}
+.logo{
+    width: 5%;
+}
+.images-head{
+    width: 70%;
+}
+.text-body {
+    font-weight: 400;
+    font-size: 16px;
+}
+.card{
+    width: 100%;
+    padding: 1em;
+}
+
