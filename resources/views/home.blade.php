@@ -11,10 +11,10 @@
         <a class="nav-link" aria-current="page" href="{{url('admin')}}">Halaman Admin</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{url('pemilik')}}">Halaman Penjual</a>
+        <a class="nav-link" href="{{url('rt')}}">Halaman rt</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{url('pembeli')}}">Halaman Pembeli</a>
+        <a class="nav-link" href="{{url('umum')}}">Halaman umum</a>
     </li>
 </ul>
     </div>

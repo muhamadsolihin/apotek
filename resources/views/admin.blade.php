@@ -3,10 +3,10 @@
 @section('content')
     <div class="container-fluid row d-flex ">
             <div class="sidebar col-md-2">
-                @include('_sidebar') <!-- Include the sidebar -->
+                @include('_sidebar') 
             </div>
             <div class="col-md-10 ">
-                @include('_dashboard') <!-- Include the dashboard content -->
+                @include('_dashboard')
             </div>
         </div>
 @endsection

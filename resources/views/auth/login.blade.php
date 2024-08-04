@@ -71,3 +71,8 @@
     </div>
 </div>
 @endsection
+<style>
+    .container{
+        background-color:#f7fdfe;
+    }
+</style>

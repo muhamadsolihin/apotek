@@ -15,6 +15,6 @@ class CheckRole
             return $next($request);
         }
         
-        return redirect('/'); // Redirect to the appropriate page
+        return redirect('/home'); // Redirect to the appropriate page
     }
 }

@@ -1,4 +1,5 @@
 <?php
+// app\Http\Controllers\HomeController.php
 
 namespace App\Http\Controllers;
 
@@ -23,6 +24,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        // Check if the authenticated user has the "rt" or "umum" role
+
+
+        // Check if the authenticated user has the "admin" role
+        if (auth()->user()->hasRole('admin')) {
+            // Redirect to the admin page
+            return view('admin');
+        }
+        if (auth()->user()->hasRole('umum')) {
+            // Redirect to the admin page
+            return view('umum');
+        }
+        if (auth()->user()->hasRole('rt')) {
+            // Redirect to the admin page
+            return view('umum');
+        }
+
+        // Default redirect if the user doesn't have any specified role
+        return redirect('/home');
     }
 }
