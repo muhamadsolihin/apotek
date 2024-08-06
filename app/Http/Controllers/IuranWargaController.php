@@ -10,8 +10,17 @@ class IuranWargaController extends Controller
     public function index(Request $request)
     {
         $query = IuranDataItem::query();
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('nama', 'like', "%{$search}%")
+                ->orWhere('tanggal', 'like', "%{p$search}%")
+                ->orWhere('nominal', 'like', "%{$search}%")
+                ->orWhere('type', 'like', "%{$search}%");
+        }
         $iuran_data_items = $query->paginate(10);
-        return view('iuranwarga.index', compact('iuran_data_items'));
+        $total_nominal = $query->sum('nominal');
+
+        return view('iuranwarga.index', compact('iuran_data_items', 'total_nominal'));
     }
 
     public function store(Request $request)
@@ -51,10 +60,10 @@ class IuranWargaController extends Controller
         return redirect()->route('iuranwarga.index')->with('success', 'Item updated successfully.');
     }
     public function destroy($id)
-{
-    $iuran_data_items = IuranDataItem::findOrFail($id);
-    $iuran_data_items->delete();
+    {
+        $iuran_data_items = IuranDataItem::findOrFail($id);
+        $iuran_data_items->delete();
 
-    return redirect()->route('iuranwarga.index')->with('success', 'Item deleted successfully.');
-}
+        return redirect()->route('iuranwarga.index')->with('success', 'Item deleted successfully.');
+    }
 }

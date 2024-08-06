@@ -10,6 +10,12 @@ class SktmController extends Controller
     public function index(Request $request)
     {
         $query = KelahiranItem::query();
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('nik_pengaju', 'like', "%{$search}%")
+                ->orWhere('tanggal', 'like', "%{p$search}%")
+                ->orWhere('kepentingan', 'like', "%{$search}%");
+        }
         $kelahiran_items = $query->paginate(10);
         return view('sktm.index', compact('kelahiran_items'));
     }
@@ -29,20 +35,20 @@ class SktmController extends Controller
             'kepentingan' => 'nullable|string',
             'alamat' => 'nullable|string',
         ]);
-    
+
         $validatedData['type'] = 'sktm';
         $validatedData['status'] = 'onproses';
         KelahiranItem::create($validatedData);
-    
+
         return redirect()->route('sktm.index')->with('success', 'Data berhasil ditambahkan.');
     }
-    
+
 
     public function create()
     {
         return view('sktm.create');
     }
-    
+
     public function edit($id)
     {
         $kelahiran_items = KelahiranItem::findOrFail($id);
@@ -72,10 +78,10 @@ class SktmController extends Controller
         return redirect()->route('sktm.index')->with('success', 'Item updated successfully.');
     }
     public function destroy($id)
-{
-    $kelahiran_items = KelahiranItem::findOrFail($id);
-    $kelahiran_items->delete();
+    {
+        $kelahiran_items = KelahiranItem::findOrFail($id);
+        $kelahiran_items->delete();
 
-    return redirect()->route('sktm.index')->with('success', 'Item deleted successfully.');
-}
+        return redirect()->route('sktm.index')->with('success', 'Item deleted successfully.');
+    }
 }

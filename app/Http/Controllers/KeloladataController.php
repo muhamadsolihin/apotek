@@ -10,7 +10,18 @@ class KelolaDataController extends Controller
     public function index(Request $request)
     {
         $query = KelolaDataItem::query();
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('nik', 'like', "%{$search}%")
+                  ->orWhere('nama', 'like', "%{$search}%")
+                  ->orWhere('tanggal_lahir', 'like', "%{$search}%")
+                  ->orWhere('jenis_kelamin', 'like', "%{$search}%")
+                  ->orWhere('alamat', 'like', "%{$search}%");
+        }
+
         $kelola_data_items = $query->paginate(10);
+
         return view('keloladata.index', compact('kelola_data_items'));
     }
 
@@ -39,6 +50,7 @@ class KelolaDataController extends Controller
     {
         return view('keloladata.create');
     }
+
     public function edit($id)
     {
         $kelola_data_items = KelolaDataItem::findOrFail($id);
@@ -67,11 +79,12 @@ class KelolaDataController extends Controller
 
         return redirect()->route('keloladata.index')->with('success', 'Item updated successfully.');
     }
-    public function destroy($id)
-{
-    $kelola_data_items = KelolaDataItem::findOrFail($id);
-    $kelola_data_items->delete();
 
-    return redirect()->route('keloladata.index')->with('success', 'Item deleted successfully.');
-}
+    public function destroy($id)
+    {
+        $kelola_data_items = KelolaDataItem::findOrFail($id);
+        $kelola_data_items->delete();
+
+        return redirect()->route('keloladata.index')->with('success', 'Item deleted successfully.');
+    }
 }

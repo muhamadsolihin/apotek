@@ -10,6 +10,12 @@ class KelahiranController extends Controller
     public function index(Request $request)
     {
         $query = KelahiranItem::query();
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('nama', 'like', "%{$search}%")
+                ->orWhere('type', 'like', "%{p$search}%")
+                ->orWhere('status', 'like', "%{$search}%");
+        }
         $kelahiran_items = $query->paginate(10);
         return view('kelahiran.index', compact('kelahiran_items'));
     }

@@ -10,6 +10,13 @@ class DataBansosController extends Controller
     public function index(Request $request)
     {
         $query = DataBansosItem::query();
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('nama_kk', 'like', "%{$search}%")
+                ->orWhere('tanggal', 'like', "%{p$search}%")
+                ->orWhere('no_kk', 'like', "%{$search}%");
+        }
+
         $data_bansos_items = $query->paginate(10);
         return view('databansos.index', compact('data_bansos_items'));
     }
